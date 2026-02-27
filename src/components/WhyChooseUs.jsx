@@ -168,7 +168,7 @@ const WhyChooseUs = () => {
               {/* Technologies */}
               <div className="text-xs text-slate-600 mb-3 uppercase tracking-widest">Core Technologies</div>
               <div className="flex flex-wrap gap-2">
-                {['React', 'Next.js', 'Node.js', 'React Native', 'AWS', 'MongoDB', 'PostgreSQL'].map(t => (
+                {['React', 'Next.js', 'Node.js', 'React Native', 'AWS', 'MongoDB', 'Firebase'].map(t => (
                   <span key={t} className="px-3 py-1 rounded-full text-[11px] font-medium text-slate-400 border border-white/[0.07] bg-white/[0.03]">
                     {t}
                   </span>

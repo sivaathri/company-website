@@ -42,7 +42,7 @@ const HighlightCard = ({ icon, title, description, gradient, delay }) => {
 };
 
 /* ── Marquee tech stack ── */
-const techs = ['React', 'Next.js', 'Node.js', 'React Native', 'PostgreSQL', 'MongoDB', 'AWS', 'Firebase', 'TypeScript', 'Docker', 'Tailwind CSS', 'Express.js'];
+const techs = ['React', 'Next.js', 'Node.js', 'React Native', 'Firebase', 'MongoDB', 'AWS', 'Supabase', 'TypeScript', 'Docker', 'Tailwind CSS', 'Express.js'];
 
 const TechMarquee = () => (
   <div className="overflow-hidden py-4 select-none mt-12">
