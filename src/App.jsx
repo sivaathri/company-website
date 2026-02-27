@@ -3,11 +3,16 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
+import Technologies from './components/Technologies';
+import Portfolio from './components/Portfolio';
 import Process from './components/Process';
 import WhyChooseUs from './components/WhyChooseUs';
+import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import SEO from './components/SEO';
 
 /* ── Custom cursor (desktop only) ── */
 const CustomCursor = () => {
@@ -31,13 +36,13 @@ const CustomCursor = () => {
     const onEnterLink = () => {
       ring_.style.width  = '52px';
       ring_.style.height = '52px';
-      ring_.style.borderColor = 'rgba(236,72,153,0.8)';
+      ring_.style.borderColor = 'rgba(220,38,38,0.8)';
       dot.style.transform = 'translate(-50%,-50%) scale(0.5)';
     };
     const onLeaveLink = () => {
       ring_.style.width  = '36px';
       ring_.style.height = '36px';
-      ring_.style.borderColor = 'rgba(99,102,241,0.6)';
+      ring_.style.borderColor = 'rgba(220,38,38,0.4)';
       dot.style.transform = 'translate(-50%,-50%) scale(1)';
     };
 
@@ -82,15 +87,27 @@ const CustomCursor = () => {
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#050510] text-white overflow-x-hidden" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+    <div className="min-h-screen bg-slate-50 text-slate-800 overflow-x-hidden" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+      {/* ── SEO: Dynamic meta tags for homepage ── */}
+      <SEO
+        title="Pondy IT Solutions | Web & App Development Company in Pondicherry"
+        description="Top-rated IT company in Pondicherry offering Web Development, Mobile App, ERP, CRM & E-Commerce solutions. 50+ clients. Get a free quote today!"
+        canonical="https://pondyitsolutions.com/"
+        ogImage="https://pondyitsolutions.com/og-image.jpg"
+        keywords="web development company in Pondicherry, mobile app development Pondicherry, ERP software Pondicherry, best IT company Pondy, IT solutions Puducherry"
+      />
       <CustomCursor />
       <Navbar />
       <main>
         <Hero />
         <About />
         <Services />
+        <Technologies />
+        <Portfolio />
         <Process />
         <WhyChooseUs />
+        <Testimonials />
+        <FAQ />
         <Contact />
       </main>
       <Footer />

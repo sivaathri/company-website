@@ -13,9 +13,9 @@ const HighlightCard = ({ icon, title, description, gradient, glowColor, delay })
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="tilt-card glass-card rounded-3xl p-8 border border-white/[0.07] relative overflow-hidden group cursor-default"
+      className="tilt-card glass-card rounded-3xl p-8 relative overflow-hidden group cursor-default"
     >
-      {/* Gradient orb inside card */}
+      {/* Gradient orb inside card (light mode) */}
       <div
         className="absolute -top-16 -right-16 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{ background: gradient }}
@@ -23,17 +23,17 @@ const HighlightCard = ({ icon, title, description, gradient, glowColor, delay })
 
       <div className="relative z-10">
         <div
-          className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+          className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 shadow-sm"
           style={{ background: gradient, boxShadow: `0 8px 24px ${glowColor}` }}
         >
           {icon}
         </div>
-        <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
-        <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
+        <h3 className="text-xl font-extrabold text-slate-800 mb-3">{title}</h3>
+        <p className="text-slate-600 text-sm leading-relaxed font-medium">{description}</p>
       </div>
 
       {/* Bottom border glow */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      <div className="absolute bottom-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{ background: `linear-gradient(to right, transparent, ${glowColor}, transparent)` }}
       />
     </motion.div>
@@ -46,7 +46,7 @@ const TechMarquee = () => (
   <div className="overflow-hidden py-4 select-none mt-12">
     <div className="marquee-track">
       {[...techs, ...techs].map((t, i) => (
-        <span key={i} className="mx-6 text-slate-600 text-sm font-medium whitespace-nowrap hover:text-amber-400 transition-colors cursor-default">
+        <span key={i} className="mx-6 text-slate-400 font-bold whitespace-nowrap hover:text-red-500 transition-colors cursor-default drop-shadow-sm">
           {t}
         </span>
       ))}
@@ -64,42 +64,42 @@ const About = () => {
       title: 'Innovation-First',
       description: 'We leverage cutting-edge AI, cloud, and modern frameworks to build future-proof solutions.',
       icon: <Lightbulb className="w-6 h-6 text-white" />,
-      gradient: 'radial-gradient(circle, rgba(220,38,38,0.55), rgba(185,28,28,0.3))',
-      glowColor: 'rgba(220,38,38,0.3)',
+      gradient: 'linear-gradient(135deg, #ef4444, #dc2626)',
+      glowColor: 'rgba(239,68,68,0.4)',
       delay: 0.1,
     },
     {
       title: 'Built to Scale',
       description: 'Microservice and serverless architectures that grow effortlessly with your user base.',
       icon: <TrendingUp className="w-6 h-6 text-white" />,
-      gradient: 'radial-gradient(circle, rgba(245,158,11,0.55), rgba(217,119,6,0.3))',
-      glowColor: 'rgba(245,158,11,0.3)',
+      gradient: 'linear-gradient(135deg, #f59e0b, #ea580c)',
+      glowColor: 'rgba(245,158,11,0.4)',
       delay: 0.2,
     },
     {
       title: '24 / 7 Support',
       description: 'Dedicated engineers on call. Continuous monitoring, patching, and feature delivery.',
       icon: <HeadphonesIcon className="w-6 h-6 text-white" />,
-      gradient: 'radial-gradient(circle, rgba(239,68,68,0.5), rgba(220,38,38,0.3))',
-      glowColor: 'rgba(239,68,68,0.3)',
+      gradient: 'linear-gradient(135deg, #f43f5e, #e11d48)',
+      glowColor: 'rgba(244,63,94,0.4)',
       delay: 0.3,
     },
     {
       title: 'Quality Assured',
       description: 'Rigorous QA, automated testing and code-review pipelines ensure zero-defect releases.',
       icon: <Award className="w-6 h-6 text-white" />,
-      gradient: 'radial-gradient(circle, rgba(251,191,36,0.5), rgba(245,158,11,0.3))',
-      glowColor: 'rgba(251,191,36,0.3)',
+      gradient: 'linear-gradient(135deg, #eab308, #d97706)',
+      glowColor: 'rgba(234,179,8,0.4)',
       delay: 0.4,
     },
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-28 relative overflow-hidden">
+    <section id="about" ref={sectionRef} className="py-28 relative overflow-hidden bg-white">
       <div className="section-divider absolute top-0 left-0 right-0" />
 
       <motion.div style={{ y: yOrb }} className="absolute -top-40 right-0 w-[600px] h-[600px] pointer-events-none">
-        <div className="orb orb-1 w-full h-full opacity-30" />
+        <div className="orb orb-1 w-full h-full opacity-10" />
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -110,7 +110,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-amber-500/30 bg-amber-500/10 text-amber-300 text-sm font-medium"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-amber-200 bg-amber-50 text-amber-600 text-sm font-bold shadow-sm"
           >
             Who We Are
           </motion.div>
@@ -120,7 +120,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
           >
             About{' '}
             <span className="grad-text">
@@ -133,9 +133,9 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.12 }}
-            className="text-lg text-slate-400 leading-relaxed"
+            className="text-lg text-slate-600 font-medium leading-relaxed"
           >
-            We are a dynamic technology studio based in <strong className="text-white">Pondicherry, India</strong>, specializing in
+            We are a dynamic technology studio based in <strong className="text-slate-900 font-extrabold">Pondicherry, India</strong>, specializing in
             crafting high-performance web, mobile, and enterprise software solutions. Our mission is
             to transform complex business challenges into beautiful, scalable digital products.
           </motion.p>
@@ -155,7 +155,7 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <div className="text-center text-xs text-slate-600 uppercase tracking-widest font-medium mt-14 mb-2">
+          <div className="text-center text-xs text-slate-400 uppercase tracking-widest font-bold mt-14 mb-2">
             Technologies We Master
           </div>
           <TechMarquee />
