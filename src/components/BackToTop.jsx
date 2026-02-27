@@ -44,11 +44,11 @@ const BackToTop = () => {
             alignItems: 'center',
             justifyContent: 'center',
             background: isHovered
-              ? 'linear-gradient(135deg, #ff4444 0%, #cc0000 100%)'
-              : 'linear-gradient(135deg, #e83030 0%, #aa0000 100%)',
+              ? 'linear-gradient(135deg, #818cf8 0%, #ec4899 100%)'
+              : 'linear-gradient(135deg, #6366f1 0%, #ec4899 100%)',
             boxShadow: isHovered
-              ? '0 0 24px rgba(220, 38, 38, 0.7), 0 4px 20px rgba(0,0,0,0.4)'
-              : '0 0 14px rgba(220, 38, 38, 0.4), 0 4px 12px rgba(0,0,0,0.3)',
+              ? '0 0 24px rgba(99,102,241,0.7), 0 4px 20px rgba(0,0,0,0.4)'
+              : '0 0 14px rgba(99,102,241,0.4), 0 4px 12px rgba(0,0,0,0.3)',
             transition: 'background 0.3s ease, box-shadow 0.3s ease',
           }}
         >

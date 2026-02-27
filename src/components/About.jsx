@@ -1,71 +1,172 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Lightbulb, Expand, HeadphonesIcon } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Lightbulb, TrendingUp, HeadphonesIcon, Award } from 'lucide-react';
+import { useTilt } from '../hooks/useParallax';
+
+/* ── Highlight cards with tilt effect ── */
+const HighlightCard = ({ icon, title, description, gradient, delay }) => {
+  const tileRef = useTilt(8);
+
+  return (
+    <motion.div
+      ref={tileRef}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      className="tilt-card glass-card rounded-3xl p-8 border border-white/[0.07] relative overflow-hidden group cursor-default"
+    >
+      {/* Gradient orb inside card */}
+      <div
+        className="absolute -top-16 -right-16 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{ background: gradient }}
+      />
+
+      <div className="relative z-10">
+        <div
+          className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+          style={{ background: gradient, boxShadow: `0 8px 24px ${gradient.includes('indigo') ? 'rgba(99,102,241,0.25)' : 'rgba(236,72,153,0.25)'}` }}
+        >
+          {icon}
+        </div>
+        <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
+        <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
+      </div>
+
+      {/* Bottom border glow */}
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{ background: 'linear-gradient(to right, transparent, rgba(99,102,241,0.5), transparent)' }}
+      />
+    </motion.div>
+  );
+};
+
+/* ── Marquee tech stack ── */
+const techs = ['React', 'Next.js', 'Node.js', 'React Native', 'PostgreSQL', 'MongoDB', 'AWS', 'Firebase', 'TypeScript', 'Docker', 'Tailwind CSS', 'Express.js'];
+
+const TechMarquee = () => (
+  <div className="overflow-hidden py-4 select-none mt-12">
+    <div className="marquee-track">
+      {[...techs, ...techs].map((t, i) => (
+        <span key={i} className="mx-6 text-slate-600 text-sm font-medium whitespace-nowrap hover:text-indigo-400 transition-colors cursor-default">
+          {t}
+        </span>
+      ))}
+    </div>
+  </div>
+);
 
 const About = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  const yOrb = useTransform(scrollYProgress, [0, 1], [60, -60]);
+
   const highlights = [
     {
-      title: 'Innovation',
-      description: 'We leverage the latest technologies to build forward-thinking solutions that keep you ahead of the curve.',
-      icon: <Lightbulb className="w-8 h-8 text-red-500" />,
+      title: 'Innovation-First',
+      description: 'We leverage cutting-edge AI, cloud, and modern frameworks to build future-proof solutions.',
+      icon: <Lightbulb className="w-6 h-6 text-white" />,
+      gradient: 'radial-gradient(circle, rgba(99,102,241,0.5), rgba(139,92,246,0.3))',
+      delay: 0.1,
     },
     {
-      title: 'Scalability',
-      description: 'Our architectures are designed to grow with your business, ensuring seamless performance at any scale.',
-      icon: <Expand className="w-8 h-8 text-red-500" />,
+      title: 'Built to Scale',
+      description: 'Microservice and serverless architectures that grow effortlessly with your user base.',
+      icon: <TrendingUp className="w-6 h-6 text-white" />,
+      gradient: 'radial-gradient(circle, rgba(236,72,153,0.5), rgba(244,63,94,0.3))',
+      delay: 0.2,
     },
     {
-      title: '24/7 Support',
-      description: 'We provide continuous maintenance and support to ensure your digital products run flawlessly.',
-      icon: <HeadphonesIcon className="w-8 h-8 text-red-500" />,
+      title: '24 / 7 Support',
+      description: 'Dedicated engineers on call. Continuous monitoring, patching, and feature delivery.',
+      icon: <HeadphonesIcon className="w-6 h-6 text-white" />,
+      gradient: 'radial-gradient(circle, rgba(34,211,238,0.5), rgba(99,102,241,0.3))',
+      delay: 0.3,
+    },
+    {
+      title: 'Quality Assured',
+      description: 'Rigorous QA, automated testing and code-review pipelines ensure zero-defect releases.',
+      icon: <Award className="w-6 h-6 text-white" />,
+      gradient: 'radial-gradient(circle, rgba(251,191,36,0.4), rgba(236,72,153,0.3))',
+      delay: 0.4,
     },
   ];
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-red-600/5 blur-[150px] -z-10 rounded-full" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" ref={sectionRef} className="py-28 relative overflow-hidden">
+      {/* Section divider */}
+      <div className="section-divider absolute top-0 left-0 right-0" />
+
+      {/* Parallax background orb */}
+      <motion.div style={{ y: yOrb }} className="absolute -top-40 right-0 w-[600px] h-[600px] pointer-events-none">
+        <div className="orb orb-1 w-full h-full opacity-30" />
+      </motion.div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.h2 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold mb-6"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-pink-500/30 bg-pink-500/10 text-pink-300 text-sm font-medium"
           >
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-400">Pondy IT Solutions</span>
+            Who We Are
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+          >
+            About{' '}
+            <span style={{
+              background: 'linear-gradient(to right,#6366f1,#ec4899)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'
+            }}>
+              Pondy IT Solutions
+            </span>
           </motion.h2>
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-gray-400 leading-relaxed text-left md:text-center"
+            transition={{ duration: 0.6, delay: 0.12 }}
+            className="text-lg text-slate-400 leading-relaxed"
           >
-            We are a dynamic technology startup based in Pondicherry, India, specializing in crafting cutting-edge web, mobile, and enterprise software solutions. 
-            Our mission is to transform complex business challenges into intuitive, scalable, and high-performing digital products.
+            We are a dynamic technology studio based in <strong className="text-white">Pondicherry, India</strong>, specializing in
+            crafting high-performance web, mobile, and enterprise software solutions. Our mission is
+            to transform complex business challenges into beautiful, scalable digital products.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {highlights.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 + 0.2 }}
-              className="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 border border-white/5 hover:border-red-500/30 group"
-            >
-              <div className="w-16 h-16 rounded-xl bg-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-              <p className="text-gray-400 leading-relaxed">{item.description}</p>
-            </motion.div>
+        {/* Cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {highlights.map((h) => (
+            <HighlightCard key={h.title} {...h} />
           ))}
         </div>
+
+        {/* Tech marquee */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="text-center text-xs text-slate-600 uppercase tracking-widest font-medium mt-14 mb-2">
+            Technologies We Master
+          </div>
+          <TechMarquee />
+        </motion.div>
       </div>
+
+      {/* Bottom divider */}
+      <div className="section-divider absolute bottom-0 left-0 right-0" />
     </section>
   );
 };

@@ -1,99 +1,185 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { CheckCircle2, Zap, MessageSquare, Code2 } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { CheckCircle2, Zap, MessageSquare, Code2, DollarSign, Shield } from 'lucide-react';
+
+const reasons = [
+  {
+    icon: <DollarSign className="w-5 h-5" />,
+    title: 'Startup-Friendly Pricing',
+    description: 'Flexible, milestone-based pricing designed to help ambitious teams launch without breaking the bank.',
+    color: '#6366f1',
+  },
+  {
+    icon: <Zap className="w-5 h-5" />,
+    title: 'Fast & Agile Delivery',
+    description: 'Rapid 2-week sprints with demo each cycle so you see real progress — not just promises.',
+    color: '#ec4899',
+  },
+  {
+    icon: <MessageSquare className="w-5 h-5" />,
+    title: 'Direct Engineer Access',
+    description: 'No middlemen. Talk directly to the engineers building your product via dedicated channels.',
+    color: '#22d3ee',
+  },
+  {
+    icon: <Code2 className="w-5 h-5" />,
+    title: 'Modern Tech Stack',
+    description: 'React, Next.js, Node, Python, AWS — cutting-edge tools for unmatched reliability and performance.',
+    color: '#f97316',
+  },
+  {
+    icon: <Shield className="w-5 h-5" />,
+    title: 'Security-First Approach',
+    description: 'OWASP best practices, code audits, and penetration testing baked into every release.',
+    color: '#a3e635',
+  },
+  {
+    icon: <CheckCircle2 className="w-5 h-5" />,
+    title: 'Proven Track Record',
+    description: '100+ delivered projects, >50 clients worldwide, 99.9% uptime SLAs — our results speak for themselves.',
+    color: '#fbbf24',
+  },
+];
 
 const WhyChooseUs = () => {
-  const reasons = [
-    {
-      title: 'Startup Friendly Pricing',
-      description: 'We offer flexible, cost-effective models designed specifically to help new businesses scale without breaking the bank.',
-      icon: <CheckCircle2 className="w-6 h-6 text-red-500" />
-    },
-    {
-      title: 'Fast & Agile Delivery',
-      description: 'Rapid prototyping and iterative development sprints to get your product to market faster.',
-      icon: <Zap className="w-6 h-6 text-red-500" />
-    },
-    {
-      title: 'Direct Developer Communication',
-      description: 'No middle-men. You talk directly with the engineers building your product for complete transparency.',
-      icon: <MessageSquare className="w-6 h-6 text-red-500" />
-    },
-    {
-      title: 'Modern Tech Stack',
-      description: 'We exclusively use state-of-the-art technologies (React, Node, Next.js, AWS) for unmatched performance.',
-      icon: <Code2 className="w-6 h-6 text-red-500" />
-    }
-  ];
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+
+  const yLeft  = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const yRight = useTransform(scrollYProgress, [0, 1], [-40, 40]);
+  const yOrb   = useTransform(scrollYProgress, [0, 1], [30, -30]);
 
   return (
-    <section className="py-24 relative bg-[#0a0a0a]">
-      <div className="absolute top-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
+    <section ref={sectionRef} className="py-28 relative overflow-hidden bg-[#080818]">
+      <div className="section-divider absolute top-0 left-0 right-0" />
+
+      {/* Parallax orb */}
+      <motion.div style={{ y: yOrb }} className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="orb orb-1 opacity-15" style={{ width: 700, height: 700 }} />
+      </motion.div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-pink-500/30 bg-pink-500/10 text-pink-300 text-sm font-medium"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-400">Choose Us?</span>
-            </h2>
-            <p className="text-lg text-gray-400 mb-10 leading-relaxed">
-              At Pondy IT Solutions, we act as your dedicated engineering team. We don't just write code; we partner with you to solve complex business problems using the latest technological innovations.
-            </p>
-            
-            <div className="space-y-6">
-              {reasons.map((reason, index) => (
-                <motion.div
-                  key={reason.title}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex bg-white/5 rounded-xl p-4 border border-white/5 hover:border-red-500/20 transition-colors"
+            Why Pondy IT
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.06 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-5 leading-tight"
+          >
+            Why{' '}
+            <span style={{
+              background: 'linear-gradient(to right,#6366f1,#ec4899)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+            }}>
+              Choose Us?
+            </span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.12 }}
+            className="text-lg text-slate-400 max-w-xl mx-auto"
+          >
+            We don't just write code — we partner with you to solve real business problems.
+          </motion.p>
+        </div>
+
+        {/* 2-column grid */}
+        <div className="grid lg:grid-cols-2 gap-14 items-start">
+          {/* Left: reasons list */}
+          <motion.div style={{ y: yLeft }} className="space-y-4">
+            {reasons.map((r, i) => (
+              <motion.div
+                key={r.title}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="group flex gap-4 p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02]
+                  hover:bg-white/[0.05] hover:border-white/[0.12] transition-all duration-300 cursor-default"
+              >
+                {/* Icon */}
+                <div
+                  className="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-110"
+                  style={{
+                    background: `${r.color}22`,
+                    border: `1px solid ${r.color}33`,
+                    color: r.color,
+                  }}
                 >
-                  <div className="flex-shrink-0 mt-1">{reason.icon}</div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-bold text-white mb-1">{reason.title}</h4>
-                    <p className="text-sm text-gray-400 leading-relaxed">{reason.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                  {r.icon}
+                </div>
+
+                {/* Text */}
+                <div>
+                  <h4 className="text-base font-semibold text-white mb-1">{r.title}</h4>
+                  <p className="text-sm text-slate-400 leading-relaxed">{r.description}</p>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
-          {/* Decorative Visual */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative hidden lg:block"
-          >
-            <div className="absolute inset-0 bg-red-600/10 blur-[100px] rounded-full" />
-            <div className="relative glass-panel rounded-3xl p-8 border border-white/10 shadow-2xl">
-               <div className="space-y-4">
-                 <div className="h-4 w-1/3 bg-white/10 rounded-full" />
-                 <div className="h-4 w-full bg-white/5 rounded-full" />
-                 <div className="h-4 w-5/6 bg-white/5 rounded-full" />
-                 <div className="h-4 w-2/3 bg-white/5 rounded-full" />
-                 
-                 <div className="mt-8 grid grid-cols-2 gap-4">
-                    <div className="h-24 bg-gradient-to-br from-red-600/20 to-transparent rounded-xl flex items-center justify-center border border-red-500/20">
-                      <span className="text-2xl font-black text-red-500">100+</span>
+          {/* Right: decorative stats panel */}
+          <motion.div style={{ y: yRight }} className="relative">
+            {/* Outer glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-pink-600/10 rounded-3xl" style={{ filter: 'blur(40px)' }} />
+
+            <div className="relative glass-card rounded-3xl p-8 border border-white/[0.09]">
+              <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Performance at a glance</div>
+
+              {/* Stats grid */}
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                {[
+                  { value: '100+', label: 'Projects Delivered', color: '#6366f1' },
+                  { value: '50+',  label: 'Happy Clients',      color: '#ec4899' },
+                  { value: '99.9%',label: 'Uptime SLA',         color: '#22d3ee' },
+                  { value: '4.9★', label: 'Average Rating',     color: '#fbbf24' },
+                ].map((s, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.05 + i * 0.08 }}
+                    className="rounded-2xl p-5 border border-white/[0.06] bg-white/[0.03] flex flex-col gap-1"
+                  >
+                    <div className="text-3xl font-extrabold" style={{
+                      background: `linear-gradient(to right, ${s.color}, #fff)`,
+                      WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+                    }}>
+                      {s.value}
                     </div>
-                    <div className="h-24 bg-white/5 rounded-xl flex items-center justify-center border border-white/10">
-                      <span className="text-2xl font-black text-white">24/7</span>
-                    </div>
-                 </div>
-               </div>
+                    <div className="text-xs text-slate-500">{s.label}</div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Technologies */}
+              <div className="text-xs text-slate-600 mb-3 uppercase tracking-widest">Core Technologies</div>
+              <div className="flex flex-wrap gap-2">
+                {['React', 'Next.js', 'Node.js', 'React Native', 'AWS', 'MongoDB', 'PostgreSQL'].map(t => (
+                  <span key={t} className="px-3 py-1 rounded-full text-[11px] font-medium text-slate-400 border border-white/[0.07] bg-white/[0.03]">
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
-          
         </div>
       </div>
+
+      <div className="section-divider absolute bottom-0 left-0 right-0" />
     </section>
   );
 };
