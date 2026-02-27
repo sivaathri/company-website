@@ -7,31 +7,31 @@ const reasons = [
     icon: <DollarSign className="w-5 h-5" />,
     title: 'Startup-Friendly Pricing',
     description: 'Flexible, milestone-based pricing designed to help ambitious teams launch without breaking the bank.',
-    color: '#6366f1',
+    color: '#dc2626',
   },
   {
     icon: <Zap className="w-5 h-5" />,
     title: 'Fast & Agile Delivery',
     description: 'Rapid 2-week sprints with demo each cycle so you see real progress — not just promises.',
-    color: '#ec4899',
+    color: '#ef4444',
   },
   {
     icon: <MessageSquare className="w-5 h-5" />,
     title: 'Direct Engineer Access',
     description: 'No middlemen. Talk directly to the engineers building your product via dedicated channels.',
-    color: '#22d3ee',
+    color: '#f97316',
   },
   {
     icon: <Code2 className="w-5 h-5" />,
     title: 'Modern Tech Stack',
     description: 'React, Next.js, Node, Python, AWS — cutting-edge tools for unmatched reliability and performance.',
-    color: '#f97316',
+    color: '#f59e0b',
   },
   {
     icon: <Shield className="w-5 h-5" />,
     title: 'Security-First Approach',
     description: 'OWASP best practices, code audits, and penetration testing baked into every release.',
-    color: '#a3e635',
+    color: '#d97706',
   },
   {
     icon: <CheckCircle2 className="w-5 h-5" />,
@@ -50,7 +50,7 @@ const WhyChooseUs = () => {
   const yOrb   = useTransform(scrollYProgress, [0, 1], [30, -30]);
 
   return (
-    <section ref={sectionRef} className="py-28 relative overflow-hidden bg-[#080818]">
+    <section ref={sectionRef} className="py-28 relative overflow-hidden bg-[#0d0d0f]">
       <div className="section-divider absolute top-0 left-0 right-0" />
 
       {/* Parallax orb */}
@@ -133,16 +133,16 @@ const WhyChooseUs = () => {
           {/* Right: redesigned stats panel */}
           <motion.div style={{ y: yRight }} className="relative">
             {/* Outer glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-pink-600/10 rounded-3xl" style={{ filter: 'blur(40px)' }} />
+            <div className="absolute inset-0 bg-gradient-to-br from-red-600/12 to-amber-500/10 rounded-3xl" style={{ filter: 'blur(40px)' }} />
 
             <div className="relative glass-card rounded-3xl p-7 border border-white/[0.09] space-y-6">
 
               {/* ── Top metric row ── */}
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { value: 100, suffix: '+', label: 'Projects', icon: <Award className="w-4 h-4" />, color: '#6366f1' },
-                  { value: 50,  suffix: '+', label: 'Clients',  icon: <Users className="w-4 h-4" />, color: '#ec4899' },
-                  { value: 5,   suffix: 'yr', label: 'Experience', icon: <Clock className="w-4 h-4" />, color: '#22d3ee' },
+                  { value: 100, suffix: '+', label: 'Projects',   icon: <Award className="w-4 h-4" />, color: '#dc2626' },
+                  { value: 50,  suffix: '+', label: 'Clients',    icon: <Users className="w-4 h-4" />, color: '#f97316' },
+                  { value: 5,   suffix: 'yr', label: 'Experience', icon: <Clock className="w-4 h-4" />, color: '#f59e0b' },
                 ].map((m, i) => (
                   <motion.div
                     key={i}
@@ -172,10 +172,10 @@ const WhyChooseUs = () => {
                 </div>
                 <div className="space-y-3">
                   {[
-                    { label: 'Web & Mobile Development', pct: 95, color: '#6366f1' },
-                    { label: 'UI/UX & Product Design',   pct: 88, color: '#ec4899' },
-                    { label: 'Cloud & DevOps',            pct: 82, color: '#22d3ee' },
-                    { label: 'AI & Automation',           pct: 75, color: '#a3e635' },
+                    { label: 'Web & Mobile Development', pct: 95, color: '#dc2626' },
+                    { label: 'UI/UX & Product Design',   pct: 88, color: '#ef4444' },
+                    { label: 'Cloud & DevOps',            pct: 82, color: '#f97316' },
+                    { label: 'AI & Automation',           pct: 75, color: '#f59e0b' },
                   ].map((b, i) => (
                     <motion.div key={i}
                       initial={{ opacity: 0, x: 20 }}
@@ -220,9 +220,9 @@ const WhyChooseUs = () => {
                   </div>
                   <div className="space-y-2">
                     {[
-                      { label: 'SaaS platform launched', time: '2d ago', color: '#6366f1' },
-                      { label: 'Mobile app — 50K installs', time: '1w ago', color: '#ec4899' },
-                      { label: 'API reduced latency 60%', time: '2w ago', color: '#22d3ee' },
+                      { label: 'SaaS platform launched',   time: '2d ago', color: '#dc2626' },
+                      { label: 'Mobile app — 50K installs', time: '1w ago', color: '#f97316' },
+                      { label: 'API reduced latency 60%',  time: '2w ago', color: '#f59e0b' },
                     ].map((w, i) => (
                       <motion.div
                         key={i}

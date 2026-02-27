@@ -44,11 +44,11 @@ const BackToTop = () => {
             alignItems: 'center',
             justifyContent: 'center',
             background: isHovered
-              ? 'linear-gradient(135deg, #818cf8 0%, #ec4899 100%)'
-              : 'linear-gradient(135deg, #6366f1 0%, #ec4899 100%)',
+              ? 'linear-gradient(135deg, #ef4444 0%, #f59e0b 100%)'
+              : 'linear-gradient(135deg, #dc2626 0%, #d97706 100%)',
             boxShadow: isHovered
-              ? '0 0 24px rgba(99,102,241,0.7), 0 4px 20px rgba(0,0,0,0.4)'
-              : '0 0 14px rgba(99,102,241,0.4), 0 4px 12px rgba(0,0,0,0.3)',
+              ? '0 0 28px rgba(220,38,38,0.75), 0 4px 20px rgba(0,0,0,0.4)'
+              : '0 0 14px rgba(220,38,38,0.45), 0 4px 12px rgba(0,0,0,0.3)',
             transition: 'background 0.3s ease, box-shadow 0.3s ease',
           }}
         >
@@ -65,7 +65,7 @@ const BackToTop = () => {
                   position: 'absolute',
                   inset: 0,
                   borderRadius: '50%',
-                  border: '2px solid rgba(239,68,68,0.7)',
+                  border: '2px solid rgba(245,158,11,0.8)',
                   pointerEvents: 'none',
                 }}
               />
