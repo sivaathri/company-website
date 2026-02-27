@@ -39,13 +39,13 @@ const Navbar = () => {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed w-full top-0 z-[900] transition-all duration-500 ${
         scrolled
-          ? 'bg-[#050510]/80 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.6)]'
+          ? 'bg-[#0d0d0f]/85 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.7)]'
           : 'bg-transparent'
       }`}
     >
       {/* Gradient line on top when scrolled */}
       {scrolled && (
-        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent" />
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-red-600/70 to-transparent" />
       )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,7 +78,7 @@ const Navbar = () => {
                   {isActive && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 rounded-lg bg-white/[0.07]"
+                      className="absolute inset-0 rounded-lg bg-red-600/10 border border-red-600/20"
                       transition={{ type: 'spring', stiffness: 450, damping: 35 }}
                     />
                   )}
@@ -93,9 +93,9 @@ const Navbar = () => {
             <a
               href="#contact"
               className="btn-shimmer relative px-5 py-2.5 rounded-full text-sm font-semibold text-white
-                bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600
-                hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500
-                shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
+                bg-gradient-to-r from-red-600 via-rose-600 to-amber-500
+                hover:from-red-500 hover:via-rose-500 hover:to-amber-400
+                shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)]
                 transition-all duration-300 hover:-translate-y-0.5"
             >
               Get Free Consultation
@@ -150,7 +150,7 @@ const Navbar = () => {
                 transition={{ delay: navLinks.length * 0.04 }}
                 onClick={() => setMobileOpen(false)}
                 className="mt-2 px-4 py-3 rounded-xl text-center font-semibold text-white text-sm
-                  bg-gradient-to-r from-indigo-600 to-pink-600 shadow-[0_0_20px_rgba(99,102,241,0.3)]"
+                  bg-gradient-to-r from-red-600 to-amber-500 shadow-[0_0_20px_rgba(220,38,38,0.3)]"
               >
                 Get Free Consultation
               </motion.a>
