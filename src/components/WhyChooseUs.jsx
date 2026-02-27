@@ -278,8 +278,14 @@ function CountUp({ to, suffix = '', color }) {
   }, [to]);
 
   return (
-    <div ref={ref} className="text-2xl font-extrabold leading-none"
-      style={{ background: `linear-gradient(to right, ${color}, #fff)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+    <div
+      ref={ref}
+      className="text-2xl font-extrabold leading-none tabular-nums"
+      style={{
+        color: color,
+        textShadow: `0 0 20px ${color}88, 0 0 40px ${color}44`,
+      }}
+    >
       {display}{suffix}
     </div>
   );

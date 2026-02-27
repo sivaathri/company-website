@@ -78,10 +78,7 @@ const Contact = () => {
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-5 leading-tight"
           >
             Let's{' '}
-            <span style={{
-              background: 'linear-gradient(to right,#ef4444,#f59e0b)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-            }}>
+            <span className="grad-text">
               Collaborate
             </span>
           </motion.h2>

@@ -137,12 +137,7 @@ const Process = () => {
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-5 leading-tight"
           >
             Our{' '}
-            <span style={{
-              background: 'linear-gradient(to right,#dc2626,#f59e0b)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}>
+            <span className="grad-text">
               Process
             </span>
           </motion.h2>
