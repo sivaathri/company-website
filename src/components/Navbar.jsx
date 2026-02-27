@@ -36,7 +36,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex-shrink-0 flex items-center cursor-pointer">
-            <img src="/logo.png" alt="Pondy IT Solutions Logo" className="h-12 w-auto" style={{ mixBlendMode: 'screen' }} />
+            <img src="/mainlogo.png" alt="Pondy IT Solutions Logo" className="h-12 w-auto" style={{ mixBlendMode: 'screen' }} />
             <span className="text-2xl font-bold tracking-tighter ml-2">
               Pondy IT <span className="text-red-500">Solutions</span>
             </span>
