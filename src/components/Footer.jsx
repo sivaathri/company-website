@@ -129,11 +129,7 @@ const Footer = () => (
         <span>© {new Date().getFullYear()} Pondy IT Solutions. All rights reserved.</span>
         <span>
           Crafted with{' '}
-          <span style={{
-            background: 'linear-gradient(to right,#ef4444,#f59e0b)',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-            fontWeight: 700,
-          }}>♥</span>
+          <span className="grad-text" style={{ fontWeight: 700 }}>♥</span>
           {' '}in Pondicherry, India
         </span>
       </div>

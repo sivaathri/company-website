@@ -26,18 +26,11 @@ const TypeWriter = () => {
   }, [charIndex, deleting, current]);
 
   return (
-    <span
-      style={{
-        background: 'linear-gradient(to right,#ef4444,#f59e0b,#f97316)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        backgroundClip: 'text',
-      }}
-    >
+    <span className="grad-text">
       {current.slice(0, charIndex)}
       <span
         className="animate-blink"
-        style={{ WebkitTextFillColor: '#ef4444', fontWeight: 400 }}
+        style={{ WebkitTextFillColor: '#ef4444', color: '#ef4444', fontWeight: 400 }}
       >|</span>
     </span>
   );
