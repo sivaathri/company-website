@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -49,26 +49,18 @@ const Navbar = () => {
       )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2.5 group select-none">
-            <div className="relative w-8 h-8 flex items-center justify-center">
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500 opacity-80 group-hover:opacity-100 transition-opacity animate-glow-pulse" />
-              <Zap className="relative w-4.5 h-4.5 text-white z-10" strokeWidth={2.5} />
-            </div>
-            <span className="font-bold text-lg tracking-tight">
-              Pondy IT{' '}
-              <span
-                style={{
-                  background: 'linear-gradient(to right,#6366f1,#ec4899)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                Solutions
-              </span>
-            </span>
+          <a href="#home" className="flex items-center select-none group">
+            <img
+              src="/mainlogo.png"
+              alt="Pondy IT Solutions"
+              className="h-16 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+              style={{
+                mixBlendMode: 'screen',
+                filter: 'drop-shadow(0 0 8px rgba(220,38,38,0.4)) brightness(1.1)',
+              }}
+            />
           </a>
 
           {/* Desktop Nav */}

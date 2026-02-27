@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { CheckCircle2, Zap, MessageSquare, Code2, DollarSign, Shield } from 'lucide-react';
+import React, { useRef, useEffect, useState } from 'react';
+import { motion, useScroll, useTransform, animate } from 'framer-motion';
+import { CheckCircle2, Zap, MessageSquare, Code2, DollarSign, Shield, TrendingUp, Star, Award, Users, Clock, ArrowUpRight } from 'lucide-react';
 
 const reasons = [
   {
@@ -130,50 +130,119 @@ const WhyChooseUs = () => {
             ))}
           </motion.div>
 
-          {/* Right: decorative stats panel */}
+          {/* Right: redesigned stats panel */}
           <motion.div style={{ y: yRight }} className="relative">
             {/* Outer glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-pink-600/10 rounded-3xl" style={{ filter: 'blur(40px)' }} />
 
-            <div className="relative glass-card rounded-3xl p-8 border border-white/[0.09]">
-              <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Performance at a glance</div>
+            <div className="relative glass-card rounded-3xl p-7 border border-white/[0.09] space-y-6">
 
-              {/* Stats grid */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
+              {/* ── Top metric row ── */}
+              <div className="grid grid-cols-3 gap-3">
                 {[
-                  { value: '100+', label: 'Projects Delivered', color: '#6366f1' },
-                  { value: '50+',  label: 'Happy Clients',      color: '#ec4899' },
-                  { value: '99.9%',label: 'Uptime SLA',         color: '#22d3ee' },
-                  { value: '4.9★', label: 'Average Rating',     color: '#fbbf24' },
-                ].map((s, i) => (
+                  { value: 100, suffix: '+', label: 'Projects', icon: <Award className="w-4 h-4" />, color: '#6366f1' },
+                  { value: 50,  suffix: '+', label: 'Clients',  icon: <Users className="w-4 h-4" />, color: '#ec4899' },
+                  { value: 5,   suffix: 'yr', label: 'Experience', icon: <Clock className="w-4 h-4" />, color: '#22d3ee' },
+                ].map((m, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.05 + i * 0.08 }}
-                    className="rounded-2xl p-5 border border-white/[0.06] bg-white/[0.03] flex flex-col gap-1"
+                    transition={{ delay: 0.06 + i * 0.09 }}
+                    className="rounded-2xl p-4 border border-white/[0.07] bg-white/[0.03] flex flex-col items-center text-center gap-1"
                   >
-                    <div className="text-3xl font-extrabold" style={{
-                      background: `linear-gradient(to right, ${s.color}, #fff)`,
-                      WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-                    }}>
-                      {s.value}
+                    <div className="w-8 h-8 rounded-xl flex items-center justify-center mb-1"
+                      style={{ background: `${m.color}22`, color: m.color }}>
+                      {m.icon}
                     </div>
-                    <div className="text-xs text-slate-500">{s.label}</div>
+                    <CountUp to={m.value} suffix={m.suffix} color={m.color} />
+                    <div className="text-[10px] text-slate-500 uppercase tracking-wider">{m.label}</div>
                   </motion.div>
                 ))}
               </div>
 
-              {/* Technologies */}
-              <div className="text-xs text-slate-600 mb-3 uppercase tracking-widest">Core Technologies</div>
-              <div className="flex flex-wrap gap-2">
-                {['React', 'Next.js', 'Node.js', 'React Native', 'AWS', 'MongoDB', 'Firebase'].map(t => (
-                  <span key={t} className="px-3 py-1 rounded-full text-[11px] font-medium text-slate-400 border border-white/[0.07] bg-white/[0.03]">
-                    {t}
-                  </span>
-                ))}
+              {/* ── Divider ── */}
+              <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+              {/* ── Expertise bars ── */}
+              <div>
+                <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                  <TrendingUp className="w-3 h-3" /> Expertise Depth
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { label: 'Web & Mobile Development', pct: 95, color: '#6366f1' },
+                    { label: 'UI/UX & Product Design',   pct: 88, color: '#ec4899' },
+                    { label: 'Cloud & DevOps',            pct: 82, color: '#22d3ee' },
+                    { label: 'AI & Automation',           pct: 75, color: '#a3e635' },
+                  ].map((b, i) => (
+                    <motion.div key={i}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.1 + i * 0.07 }}
+                    >
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-slate-300">{b.label}</span>
+                        <span style={{ color: b.color }} className="font-semibold">{b.pct}%</span>
+                      </div>
+                      <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${b.pct}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.1, delay: 0.15 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                          className="h-full rounded-full"
+                          style={{ background: `linear-gradient(to right, ${b.color}99, ${b.color})` }}
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
+
+              {/* ── Divider ── */}
+              <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+              {/* ── Client satisfaction + recent wins ── */}
+              <div className="flex gap-4 items-start">
+                {/* Satisfaction ring */}
+                <div className="flex-shrink-0 flex flex-col items-center gap-2">
+                  <SatisfactionRing value={98} />
+                  <div className="text-[10px] text-slate-500 uppercase tracking-wider text-center">Satisfaction</div>
+                </div>
+
+                {/* Recent wins */}
+                <div className="flex-1 min-w-0">
+                  <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-2 flex items-center gap-1">
+                    <Star className="w-3 h-3 text-yellow-400" /> Recent Wins
+                  </div>
+                  <div className="space-y-2">
+                    {[
+                      { label: 'SaaS platform launched', time: '2d ago', color: '#6366f1' },
+                      { label: 'Mobile app — 50K installs', time: '1w ago', color: '#ec4899' },
+                      { label: 'API reduced latency 60%', time: '2w ago', color: '#22d3ee' },
+                    ].map((w, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: 12 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.12 + i * 0.09 }}
+                        className="flex items-center gap-2 p-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02]"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: w.color }} />
+                        <span className="text-xs text-slate-300 flex-1 truncate">{w.label}</span>
+                        <span className="text-[10px] text-slate-600 flex-shrink-0 flex items-center gap-0.5">
+                          <ArrowUpRight className="w-3 h-3" />{w.time}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
             </div>
           </motion.div>
         </div>
@@ -183,5 +252,69 @@ const WhyChooseUs = () => {
     </section>
   );
 };
+
+/* ── Helper: animated count-up number ── */
+function CountUp({ to, suffix = '', color }) {
+  const [display, setDisplay] = useState(0);
+  const ref = useRef(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        const controls = animate(0, to, {
+          duration: 1.4,
+          ease: [0.22, 1, 0.36, 1],
+          onUpdate: v => setDisplay(Math.round(v)),
+        });
+        return () => controls.stop();
+      }
+    }, { threshold: 0.5 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [to]);
+
+  return (
+    <div ref={ref} className="text-2xl font-extrabold leading-none"
+      style={{ background: `linear-gradient(to right, ${color}, #fff)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+      {display}{suffix}
+    </div>
+  );
+}
+
+/* ── Helper: SVG satisfaction ring ── */
+function SatisfactionRing({ value }) {
+  const r = 30, circ = 2 * Math.PI * r;
+  const dash = (value / 100) * circ;
+  return (
+    <div className="relative w-[76px] h-[76px]">
+      <svg className="rotate-[-90deg]" width="76" height="76" viewBox="0 0 76 76">
+        <circle cx="38" cy="38" r={r} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="7" />
+        <motion.circle
+          cx="38" cy="38" r={r} fill="none"
+          stroke="url(#ringGrad)" strokeWidth="7"
+          strokeLinecap="round"
+          strokeDasharray={circ}
+          initial={{ strokeDashoffset: circ }}
+          whileInView={{ strokeDashoffset: circ - dash }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+        />
+        <defs>
+          <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#6366f1" />
+            <stop offset="100%" stopColor="#ec4899" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <span className="text-base font-extrabold text-white leading-none">{value}%</span>
+      </div>
+    </div>
+  );
+}
 
 export default WhyChooseUs;
