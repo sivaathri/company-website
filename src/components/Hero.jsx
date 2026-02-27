@@ -28,7 +28,7 @@ const TypeWriter = () => {
   return (
     <span
       style={{
-        background: 'linear-gradient(to right,#6366f1,#ec4899,#f43f5e)',
+        background: 'linear-gradient(to right,#ef4444,#f59e0b,#f97316)',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
         backgroundClip: 'text',
@@ -37,7 +37,7 @@ const TypeWriter = () => {
       {current.slice(0, charIndex)}
       <span
         className="animate-blink"
-        style={{ WebkitTextFillColor: '#6366f1', fontWeight: 400 }}
+        style={{ WebkitTextFillColor: '#ef4444', fontWeight: 400 }}
       >|</span>
     </span>
   );
@@ -74,7 +74,7 @@ const ParticleCanvas = () => {
       vx: (Math.random() - 0.5) * 0.3,
       vy: (Math.random() - 0.5) * 0.3,
       alpha: Math.random() * 0.5 + 0.1,
-      color: Math.random() > 0.5 ? '99,102,241' : Math.random() > 0.5 ? '236,72,153' : '34,211,238',
+      color: Math.random() > 0.5 ? '220,38,38' : Math.random() > 0.5 ? '245,158,11' : '249,115,22',
     }));
 
     const draw = () => {
@@ -99,7 +99,7 @@ const ParticleCanvas = () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(99,102,241,${0.06 * (1 - dist / 100)})`;
+            ctx.strokeStyle = `rgba(220,38,38,${0.06 * (1 - dist / 100)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -173,7 +173,7 @@ const Hero = () => {
 
       {/* ── Radial vignette ── */}
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 50%, transparent 40%, #050510 100%)' }}
+        style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 50%, transparent 40%, #0d0d0f 100%)' }}
       />
 
       {/* ── Main text ── */}
@@ -183,9 +183,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8 border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-sm font-medium"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8 border border-red-500/30 bg-red-500/10 text-red-300 text-sm font-medium"
         >
-          <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
           Technology Partner for Startups & Enterprises
         </motion.div>
 
@@ -222,10 +222,10 @@ const Hero = () => {
             <span
               key={s.label}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium
-                bg-white/5 border border-white/10 text-slate-300 hover:border-indigo-500/40 hover:bg-indigo-500/10
+                bg-white/5 border border-white/10 text-slate-300 hover:border-red-500/40 hover:bg-red-500/10
                 cursor-default transition-all duration-300"
             >
-              <span className="text-indigo-400">{s.icon}</span>
+              <span className="text-red-400">{s.icon}</span>
               {s.label}
             </span>
           ))}
@@ -241,8 +241,8 @@ const Hero = () => {
           <a
             href="#contact"
             className="btn-shimmer group relative px-8 py-4 rounded-2xl font-semibold text-white
-              bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600
-              shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_50px_rgba(99,102,241,0.6)]
+              bg-gradient-to-r from-red-600 via-rose-600 to-amber-500
+              shadow-[0_0_30px_rgba(220,38,38,0.4)] hover:shadow-[0_0_50px_rgba(220,38,38,0.6)]
               transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2"
           >
             Start Your Project
@@ -252,7 +252,7 @@ const Hero = () => {
             href="#services"
             className="group px-8 py-4 rounded-2xl font-semibold text-slate-300 hover:text-white
               border border-white/10 bg-white/[0.03] backdrop-blur-sm
-              hover:bg-white/[0.07] hover:border-white/20
+              hover:bg-white/[0.07] hover:border-red-500/30
               transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2"
           >
             Explore Services
@@ -316,7 +316,7 @@ const Hero = () => {
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
           className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center pt-1.5"
         >
-          <div className="w-1 h-2 rounded-full bg-indigo-400 opacity-70" />
+          <div className="w-1 h-2 rounded-full bg-red-400 opacity-70" />
         </motion.div>
       </motion.div>
     </section>

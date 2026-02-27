@@ -6,7 +6,7 @@ import emailjs from '@emailjs/browser';
 const inputClass = `
   w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3.5 text-white text-sm
   placeholder-slate-600 font-medium
-  focus:outline-none focus:border-indigo-500/60 focus:bg-indigo-500/[0.04]
+  focus:outline-none focus:border-red-500/60 focus:bg-red-500/[0.04]
   transition-all duration-300 resize-none
 `;
 
@@ -43,9 +43,9 @@ const Contact = () => {
   };
 
   const contactItems = [
-    { icon: <Mail className="w-5 h-5" />, label: 'Email Us', value: 'pondyitsolutions26@gmail.com', href: 'mailto:pondyitsolutions26@gmail.com', color: '#6366f1' },
-    { icon: <Phone className="w-5 h-5" />, label: 'Call Us', value: '+91 98765 43210', href: 'tel:+919876543210', color: '#ec4899' },
-    { icon: <MapPin className="w-5 h-5" />, label: 'Location', value: 'Pondicherry, India', href: null, color: '#22d3ee' },
+    { icon: <Mail className="w-5 h-5" />, label: 'Email Us', value: 'pondyitsolutions26@gmail.com', href: 'mailto:pondyitsolutions26@gmail.com', color: '#dc2626' },
+    { icon: <Phone className="w-5 h-5" />, label: 'Call Us', value: '+91 98765 43210', href: 'tel:+919876543210', color: '#f59e0b' },
+    { icon: <MapPin className="w-5 h-5" />, label: 'Location', value: 'Pondicherry, India', href: null, color: '#f97316' },
   ];
 
   return (
@@ -64,7 +64,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-sm font-medium"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-amber-500/30 bg-amber-500/10 text-amber-300 text-sm font-medium"
           >
             <Sparkles className="w-3.5 h-3.5" />
             Let's Build Together
@@ -79,7 +79,7 @@ const Contact = () => {
           >
             Let's{' '}
             <span style={{
-              background: 'linear-gradient(to right,#22d3ee,#6366f1)',
+              background: 'linear-gradient(to right,#ef4444,#f59e0b)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
               Collaborate
@@ -101,7 +101,6 @@ const Contact = () => {
         <div className="grid lg:grid-cols-5 gap-8 items-start">
           {/* Left: Contact info */}
           <motion.div style={{ y: yLeft }} className="lg:col-span-2 space-y-5">
-            {/* Info cards */}
             {contactItems.map((item, i) => (
               <motion.div
                 key={i}
@@ -114,14 +113,14 @@ const Contact = () => {
               >
                 <div
                   className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ background: `${item.color}18`, border: `1px solid ${item.color}28`, color: item.color }}
+                  style={{ background: `${item.color}18`, border: `1px solid ${item.color}35`, color: item.color }}
                 >
                   {item.icon}
                 </div>
                 <div>
                   <div className="text-xs text-slate-500 font-medium mb-0.5">{item.label}</div>
                   {item.href ? (
-                    <a href={item.href} className="text-sm font-semibold text-white hover:text-indigo-400 transition-colors break-all">
+                    <a href={item.href} className="text-sm font-semibold text-white hover:text-amber-400 transition-colors break-all">
                       {item.value}
                     </a>
                   ) : (
@@ -150,9 +149,13 @@ const Contact = () => {
           {/* Right: Form */}
           <motion.div style={{ y: yRight }} className="lg:col-span-3">
             <div className="glass-card rounded-3xl p-8 border border-white/[0.08] relative overflow-hidden">
-              {/* Card inner glow */}
+              {/* Card inner glow — red tint */}
               <div className="absolute -top-20 -right-20 w-48 h-48 pointer-events-none"
-                style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.12), transparent 70%)' }}
+                style={{ background: 'radial-gradient(circle, rgba(220,38,38,0.1), transparent 70%)' }}
+              />
+              {/* Gold bottom accent */}
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 pointer-events-none"
+                style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.08), transparent 70%)' }}
               />
 
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-5 relative z-10">
@@ -199,8 +202,8 @@ const Contact = () => {
                   type="submit"
                   disabled={isLoading}
                   className="btn-shimmer w-full py-4 rounded-2xl font-bold text-white flex justify-center items-center gap-2.5
-                    bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600
-                    shadow-[0_0_25px_rgba(99,102,241,0.35)] hover:shadow-[0_0_40px_rgba(99,102,241,0.55)]
+                    bg-gradient-to-r from-red-600 via-rose-600 to-amber-500
+                    shadow-[0_0_25px_rgba(220,38,38,0.4)] hover:shadow-[0_0_40px_rgba(220,38,38,0.6)]
                     disabled:opacity-50 disabled:cursor-not-allowed
                     transition-all duration-300 hover:-translate-y-0.5"
                 >

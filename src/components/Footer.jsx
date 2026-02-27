@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Twitter, Linkedin, Instagram, Zap, ArrowUpRight } from 'lucide-react';
+import { Github, Twitter, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const footerLinks = {
@@ -18,9 +18,9 @@ const footerLinks = {
     { name: 'Custom Software',  href: '#services' },
   ],
   Legal: [
-    { name: 'Privacy Policy',  href: '#' },
-    { name: 'Terms of Service',href: '#' },
-    { name: 'Cookie Policy',   href: '#' },
+    { name: 'Privacy Policy',   href: '#' },
+    { name: 'Terms of Service', href: '#' },
+    { name: 'Cookie Policy',    href: '#' },
   ],
 };
 
@@ -32,13 +32,16 @@ const socials = [
 ];
 
 const Footer = () => (
-  <footer className="relative overflow-hidden bg-[#030308] border-t border-white/[0.06]">
-    {/* Top gradient line */}
-    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
+  <footer className="relative overflow-hidden bg-[#0a0a0c] border-t border-white/[0.06]">
+    {/* Top gradient line — red → gold */}
+    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-red-600/50 to-transparent" />
 
-    {/* Background orb */}
-    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
-      style={{ background: 'radial-gradient(ellipse, rgba(99,102,241,0.04) 0%, transparent 70%)' }}
+    {/* Dual background orbs */}
+    <div className="absolute bottom-0 left-1/4 w-[500px] h-[300px] pointer-events-none"
+      style={{ background: 'radial-gradient(ellipse, rgba(220,38,38,0.05) 0%, transparent 70%)' }}
+    />
+    <div className="absolute bottom-0 right-1/4 w-[500px] h-[300px] pointer-events-none"
+      style={{ background: 'radial-gradient(ellipse, rgba(245,158,11,0.04) 0%, transparent 70%)' }}
     />
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -47,18 +50,14 @@ const Footer = () => (
 
         {/* Brand */}
         <div className="xl:col-span-2">
-          <a href="#home" className="flex items-center gap-2.5 mb-5 group w-fit">
-            <div className="relative w-8 h-8 flex items-center justify-center">
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500 opacity-80" />
-              <Zap className="relative w-4.5 h-4.5 text-white z-10" strokeWidth={2.5} />
-            </div>
-            <span className="font-bold text-lg tracking-tight text-white">
-              Pondy IT{' '}
-              <span style={{
-                background: 'linear-gradient(to right,#6366f1,#ec4899)',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-              }}>Solutions</span>
-            </span>
+          {/* Logo */}
+          <a href="#home" className="inline-flex mb-5 group">
+            <img
+              src="/mainlogo.png"
+              alt="Pondy IT Solutions"
+              className="h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+              style={{ mixBlendMode: 'screen', filter: 'drop-shadow(0 0 8px rgba(220,38,38,0.4)) brightness(1.1)' }}
+            />
           </a>
 
           <p className="text-slate-500 text-sm leading-relaxed mb-6 max-w-xs">
@@ -73,7 +72,7 @@ const Footer = () => (
                 href={s.href}
                 aria-label={s.label}
                 className="w-9 h-9 rounded-xl border border-white/[0.07] bg-white/[0.03] flex items-center justify-center text-slate-500
-                  hover:text-white hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-all duration-300"
+                  hover:text-white hover:border-red-500/40 hover:bg-red-500/10 transition-all duration-300"
               >
                 {s.icon}
               </a>
@@ -90,7 +89,7 @@ const Footer = () => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-sm text-slate-500 hover:text-white transition-colors duration-200 flex items-center gap-1 group"
+                    className="text-sm text-slate-500 hover:text-amber-400 transition-colors duration-200 flex items-center gap-1 group"
                   >
                     {link.name}
                     <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
@@ -116,8 +115,8 @@ const Footer = () => (
         <a
           href="#contact"
           className="btn-shimmer flex-shrink-0 px-6 py-3 rounded-xl font-semibold text-white text-sm
-            bg-gradient-to-r from-indigo-600 to-pink-600
-            shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)]
+            bg-gradient-to-r from-red-600 to-amber-500
+            shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_35px_rgba(220,38,38,0.55)]
             transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
         >
           Get Free Consultation
@@ -131,7 +130,7 @@ const Footer = () => (
         <span>
           Crafted with{' '}
           <span style={{
-            background: 'linear-gradient(to right,#6366f1,#ec4899)',
+            background: 'linear-gradient(to right,#ef4444,#f59e0b)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             fontWeight: 700,
           }}>♥</span>

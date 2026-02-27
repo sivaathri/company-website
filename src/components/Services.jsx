@@ -8,8 +8,8 @@ const services = [
     title: 'Mobile App Development',
     description: 'Native iOS & Android and cross-platform apps with React Native. Exceptional UX, offline support, and app store publishing.',
     icon: <Smartphone className="w-7 h-7" />,
-    gradient: 'from-indigo-600 to-violet-600',
-    glow: 'rgba(99,102,241,0.3)',
+    gradient: 'from-red-600 to-rose-700',
+    glow: 'rgba(220,38,38,0.35)',
     tag: 'iOS / Android',
     featured: true,
   },
@@ -17,8 +17,8 @@ const services = [
     title: 'Web Application Development',
     description: 'Scalable, secure, and blazing-fast web apps using React, Next.js, Node.js, and modern cloud infrastructure.',
     icon: <MonitorPlay className="w-7 h-7" />,
-    gradient: 'from-pink-600 to-rose-600',
-    glow: 'rgba(236,72,153,0.3)',
+    gradient: 'from-amber-500 to-orange-600',
+    glow: 'rgba(245,158,11,0.35)',
     tag: 'React / Next.js',
     featured: false,
   },
@@ -26,8 +26,8 @@ const services = [
     title: 'Custom Software',
     description: 'Tailor-made solutions crafted for your unique workflows — automation, integrations, and internal tooling.',
     icon: <Layers className="w-7 h-7" />,
-    gradient: 'from-cyan-600 to-blue-600',
-    glow: 'rgba(34,211,238,0.3)',
+    gradient: 'from-rose-600 to-red-800',
+    glow: 'rgba(225,29,72,0.35)',
     tag: 'Full-Stack',
     featured: false,
   },
@@ -35,8 +35,8 @@ const services = [
     title: 'ERP & CRM Systems',
     description: 'Complete enterprise resource and customer-relationship management platforms for operational excellence.',
     icon: <Database className="w-7 h-7" />,
-    gradient: 'from-violet-600 to-purple-700',
-    glow: 'rgba(139,92,246,0.3)',
+    gradient: 'from-red-700 to-amber-600',
+    glow: 'rgba(185,28,28,0.35)',
     tag: 'Enterprise',
     featured: false,
   },
@@ -44,8 +44,8 @@ const services = [
     title: 'E-Commerce Development',
     description: 'High-converting storefronts with secure payment gateways, smart inventory, and seamless checkout.',
     icon: <ShoppingCart className="w-7 h-7" />,
-    gradient: 'from-amber-600 to-orange-600',
-    glow: 'rgba(245,158,11,0.3)',
+    gradient: 'from-amber-600 to-yellow-500',
+    glow: 'rgba(217,119,6,0.35)',
     tag: 'Commerce',
     featured: false,
   },
@@ -68,8 +68,8 @@ const ServiceCard = ({ service, index }) => {
     >
       {/* Hover gradient fill */}
       <div
-        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none`}
-        style={{ background: `radial-gradient(ellipse at 30% 30%, ${service.glow.replace('0.3', '0.08')}, transparent 70%)` }}
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"
+        style={{ background: `radial-gradient(ellipse at 30% 30%, ${service.glow.replace('0.35', '0.1')}, transparent 70%)` }}
       />
 
       {/* Icon */}
@@ -84,9 +84,9 @@ const ServiceCard = ({ service, index }) => {
           <span
             className="absolute left-0 top-0 -translate-x-1 -translate-y-1 text-[9px] font-semibold px-2 py-0.5 rounded-full border"
             style={{
-              background: `${service.glow.replace('0.3', '0.15')}`,
-              borderColor: `${service.glow.replace('0.3', '0.4')}`,
-              color: 'rgba(255,255,255,0.7)',
+              background: `${service.glow.replace('0.35', '0.15')}`,
+              borderColor: `${service.glow.replace('0.35', '0.45')}`,
+              color: 'rgba(255,255,255,0.8)',
             }}
           >
             {service.tag}
@@ -100,7 +100,7 @@ const ServiceCard = ({ service, index }) => {
           {service.description}
         </p>
 
-        <a href="#contact" className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 group-hover:text-white transition-colors duration-300">
+        <a href="#contact" className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 group-hover:text-amber-400 transition-colors duration-300">
           <span>Learn more</span>
           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
         </a>
@@ -109,7 +109,7 @@ const ServiceCard = ({ service, index }) => {
       {/* Bottom gradient border */}
       <div
         className="absolute bottom-0 left-4 right-4 h-[1.5px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"
-        style={{ background: `linear-gradient(to right, transparent, ${service.glow.replace('0.3', '0.7')}, transparent)` }}
+        style={{ background: `linear-gradient(to right, transparent, ${service.glow.replace('0.35', '0.8')}, transparent)` }}
       />
     </motion.div>
   );
@@ -121,7 +121,7 @@ const Services = () => {
   const yOrb = useTransform(scrollYProgress, [0, 1], [-40, 60]);
 
   return (
-    <section id="services" ref={sectionRef} className="py-28 relative overflow-hidden bg-[#080818]">
+    <section id="services" ref={sectionRef} className="py-28 relative overflow-hidden bg-[#111114]">
       <div className="section-divider absolute top-0 left-0 right-0" />
 
       {/* Parallax orb */}
@@ -137,7 +137,7 @@ const Services = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-sm font-medium"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-red-500/30 bg-red-500/10 text-red-300 text-sm font-medium"
             >
               <Sparkles className="w-3.5 h-3.5" />
               What We Build
@@ -152,7 +152,7 @@ const Services = () => {
             >
               Our{' '}
               <span style={{
-                background: 'linear-gradient(to right,#6366f1,#ec4899)',
+                background: 'linear-gradient(to right,#ef4444,#f59e0b)',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'
               }}>
                 Services
@@ -176,8 +176,8 @@ const Services = () => {
             viewport={{ once: true }}
             href="#contact"
             className="flex-shrink-0 btn-shimmer flex items-center gap-2 px-6 py-3 rounded-2xl font-semibold text-white text-sm
-              bg-gradient-to-r from-indigo-600 to-pink-600
-              shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)]
+              bg-gradient-to-r from-red-600 to-amber-500
+              shadow-[0_0_20px_rgba(220,38,38,0.35)] hover:shadow-[0_0_35px_rgba(220,38,38,0.55)]
               transition-all duration-300 hover:-translate-y-0.5"
           >
             Start a Project

@@ -65,7 +65,7 @@ const WhyChooseUs = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-pink-500/30 bg-pink-500/10 text-pink-300 text-sm font-medium"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-red-500/30 bg-red-500/10 text-red-300 text-sm font-medium"
           >
             Why Pondy IT
           </motion.div>
@@ -78,7 +78,7 @@ const WhyChooseUs = () => {
           >
             Why{' '}
             <span style={{
-              background: 'linear-gradient(to right,#6366f1,#ec4899)',
+              background: 'linear-gradient(to right,#ef4444,#f59e0b)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
               Choose Us?

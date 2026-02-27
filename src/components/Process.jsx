@@ -6,53 +6,52 @@ const steps = [
     id: '01',
     title: 'Discovery & Strategy',
     description: 'Deep-dive into your business goals, audience, and competitive landscape to define the winning product strategy.',
-    color: '#6366f1',
-    glow: 'rgba(99,102,241,0.35)',
+    color: '#dc2626',
+    glow: 'rgba(220,38,38,0.4)',
     emoji: '🔍',
   },
   {
     id: '02',
     title: 'UI/UX Design',
     description: 'Crafting pixel-perfect wireframes and interactive prototypes that users love, backed by design thinking.',
-    color: '#8b5cf6',
-    glow: 'rgba(139,92,246,0.35)',
+    color: '#ef4444',
+    glow: 'rgba(239,68,68,0.4)',
     emoji: '🎨',
   },
   {
     id: '03',
     title: 'Development',
     description: 'Writing clean, tested, scalable code using modern frameworks — with daily progress updates for you.',
-    color: '#ec4899',
-    glow: 'rgba(236,72,153,0.35)',
+    color: '#f97316',
+    glow: 'rgba(249,115,22,0.4)',
     emoji: '💻',
   },
   {
     id: '04',
     title: 'QA & Testing',
     description: 'Automated + manual testing, security audits, and performance benchmarking before any release.',
-    color: '#f43f5e',
-    glow: 'rgba(244,63,94,0.35)',
+    color: '#f59e0b',
+    glow: 'rgba(245,158,11,0.4)',
     emoji: '✅',
   },
   {
     id: '05',
     title: 'Deployment',
     description: 'CI/CD pipelines, zero-downtime launches to cloud, app stores, or your own servers.',
-    color: '#f97316',
-    glow: 'rgba(249,115,22,0.35)',
+    color: '#eab308',
+    glow: 'rgba(234,179,8,0.4)',
     emoji: '🚀',
   },
   {
     id: '06',
     title: 'Growth & Support',
     description: 'Post-launch monitoring, SLA-backed support, feature iterations, and growth-driven improvements.',
-    color: '#fbbf24',
-    glow: 'rgba(251,191,36,0.35)',
+    color: '#d97706',
+    glow: 'rgba(217,119,6,0.4)',
     emoji: '📈',
   },
 ];
 
-/* Single step card */
 const StepCard = ({ step, index }) => (
   <motion.div
     initial={{ opacity: 0, y: 40 }}
@@ -61,14 +60,10 @@ const StepCard = ({ step, index }) => (
     transition={{ duration: 0.55, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
     className="relative group"
   >
-    {/* Card */}
     <div
       className="relative overflow-hidden rounded-2xl p-6 border border-white/[0.07] bg-white/[0.03]
-        hover:bg-white/[0.06] transition-all duration-400 cursor-default h-full"
-      style={{
-        boxShadow: 'none',
-        transition: 'box-shadow 0.4s ease, background 0.4s ease',
-      }}
+        hover:bg-white/[0.06] cursor-default h-full"
+      style={{ transition: 'box-shadow 0.4s ease, background 0.4s ease, border-color 0.4s ease' }}
       onMouseEnter={e => {
         e.currentTarget.style.boxShadow = `0 8px 40px ${step.glow}, 0 1px 0 ${step.color}55 inset`;
         e.currentTarget.style.borderColor = `${step.color}44`;
@@ -80,7 +75,6 @@ const StepCard = ({ step, index }) => (
     >
       {/* Top row: number + emoji */}
       <div className="flex items-start justify-between mb-5">
-        {/* Step number badge */}
         <div
           className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-white text-lg flex-shrink-0"
           style={{
@@ -90,17 +84,12 @@ const StepCard = ({ step, index }) => (
         >
           {step.id}
         </div>
-
-        {/* Emoji */}
         <span className="text-3xl opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 select-none">
           {step.emoji}
         </span>
       </div>
 
-      {/* Title */}
       <h3 className="text-lg font-bold text-white mb-2 leading-snug">{step.title}</h3>
-
-      {/* Description */}
       <p className="text-sm text-slate-400 leading-relaxed">{step.description}</p>
 
       {/* Bottom accent line */}
@@ -109,8 +98,6 @@ const StepCard = ({ step, index }) => (
         style={{ background: `linear-gradient(to right, transparent, ${step.color}, transparent)` }}
       />
     </div>
-
-    {/* Connector arrow (right side, hidden on last in row) */}
   </motion.div>
 );
 
@@ -120,10 +107,9 @@ const Process = () => {
   const yOrb = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   return (
-    <section id="process" ref={sectionRef} className="py-28 relative overflow-hidden">
+    <section id="process" ref={sectionRef} className="py-28 relative overflow-hidden bg-[#111114]">
       <div className="section-divider absolute top-0 left-0 right-0" />
 
-      {/* Parallax orb */}
       <motion.div
         style={{ y: yOrb }}
         className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none"
@@ -138,7 +124,7 @@ const Process = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-violet-500/30 bg-violet-500/10 text-violet-300 text-sm font-medium"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border border-red-500/30 bg-red-500/10 text-red-300 text-sm font-medium"
           >
             How We Work
           </motion.div>
@@ -151,14 +137,12 @@ const Process = () => {
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-5 leading-tight"
           >
             Our{' '}
-            <span
-              style={{
-                background: 'linear-gradient(to right,#8b5cf6,#ec4899)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
+            <span style={{
+              background: 'linear-gradient(to right,#dc2626,#f59e0b)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
               Process
             </span>
           </motion.h2>
@@ -186,7 +170,6 @@ const Process = () => {
           <div className="flex items-center justify-between max-w-5xl mx-auto">
             {steps.map((step, i) => (
               <React.Fragment key={step.id}>
-                {/* Dot */}
                 <div
                   className="w-5 h-5 rounded-full flex-shrink-0 relative"
                   style={{ background: step.color, boxShadow: `0 0 14px ${step.glow}` }}
@@ -196,13 +179,12 @@ const Process = () => {
                     style={{ border: `2px solid ${step.color}`, opacity: 0.5 }}
                   />
                 </div>
-                {/* Connector */}
                 {i < steps.length - 1 && (
                   <div
                     className="flex-1 h-[2px] mx-1"
                     style={{
                       background: `linear-gradient(to right, ${step.color}, ${steps[i + 1].color})`,
-                      opacity: 0.4,
+                      opacity: 0.5,
                     }}
                   />
                 )}
