@@ -53,7 +53,7 @@ const Navbar = () => {
           {/* Logo */}
           <a href="#home" className="flex items-center select-none group">
             <img
-              src="/mainlogo.png"
+              src="/logo.png"
               alt="Pondy IT Solutions"
               className="h-16 w-auto object-contain transition-all duration-300 group-hover:scale-105"
               style={{

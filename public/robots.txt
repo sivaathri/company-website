@@ -1,0 +1,54 @@
+# ═══════════════════════════════════════════════════════════════
+# robots.txt — Pondy IT Solutions (pondyitsolutions.com)
+# Last updated: 2026-02-27
+# ═══════════════════════════════════════════════════════════════
+
+# Allow all major search engine bots
+User-agent: *
+Allow: /
+
+# Block admin, API, and private paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /.env
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /*?*sessionid=
+Disallow: /*?*tracking=
+Disallow: /private/
+Disallow: /tmp/
+
+# Crawl delay (be respectful with resources)
+Crawl-delay: 1
+
+# ═══ Google ═══
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Crawl-delay: 0
+
+# ═══ Google Image Bot ═══
+User-agent: Googlebot-Image
+Allow: /
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# ═══ Bing ═══
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# ═══ Block bad bots ═══
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# ═══ Sitemap ═══
+Sitemap: https://pondyitsolutions.com/sitemap.xml
